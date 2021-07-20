@@ -57,7 +57,39 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 This is a simple REST API web application
 
-- configure database
+- rename env.example. to env. configure database
+- configure db, QUEUE_CONNECTION=database
+- for install table use php artisan migrate
+
+## API
+    - GET your_server/api/exchange get exchange currency ex:
+    [
+        {
+            "id": 1,
+            "currency": "USD",
+            "date": "2021-07-20",
+            "value": "4.1736",
+            "source": "API BNR",
+           
+        },
+        {
+            "id": 2,
+            "currency": "EUR",
+            "date": "2021-07-20",
+            "value": "4.9253",
+            "source": "API BNR",
+        },
+       ......
+    ]
+    - POST your_server/api/exchange post a exchange currency 
+        { "currency": "EUR", 
+          "date": "2021-07-19",
+          "value": "0.2564",
+          "source": "MANUALY",
+        }
+ ## CRONJOB
+- there is a cronjob that will add data to the same table as above using bnr.ro feed for USD and EUR currencies.
+- command for the running of this cronjob: php artisan exchange:daily
 
 ## Security Vulnerabilities
 
