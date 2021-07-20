@@ -87,9 +87,13 @@ This is a simple REST API web application
           "value": "0.2564",
           "source": "MANUALY",
         }
- ## CRONJOB
+ ## CronJob
 - there is a cronjob that will add data to the same table as above using bnr.ro feed for USD and EUR currencies.
 - command for the running of this cronjob: php artisan exchange:daily
+
+## Queue
+- There is a simple queue that posts all new data from the table in a JSON format to the following URL: http://tools.test-me.xyz/site/capture
+- this job working when an exchange curreny will be added in database.
 
 ## Security Vulnerabilities
 
