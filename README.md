@@ -53,6 +53,48 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
+## Documentation
+
+This is a simple REST API web application
+
+- rename env.example. to env. configure database
+- configure db, QUEUE_CONNECTION=database
+- for install table use php artisan migrate
+
+## API
+    - GET your_server/api/exchange get exchange currency ex:
+    [
+        {
+            "id": 1,
+            "currency": "USD",
+            "date": "2021-07-20",
+            "value": "4.1736",
+            "source": "API BNR",
+           
+        },
+        {
+            "id": 2,
+            "currency": "EUR",
+            "date": "2021-07-20",
+            "value": "4.9253",
+            "source": "API BNR",
+        },
+       ......
+    ]
+    - POST your_server/api/exchange post a exchange currency 
+        { "currency": "EUR", 
+          "date": "2021-07-19",
+          "value": "0.2564",
+          "source": "MANUALY",
+        }
+ ## CronJob
+- there is a cronjob that will add data to the same table as above using bnr.ro feed for USD and EUR currencies.
+- command for the running of this cronjob: php artisan exchange:daily
+
+## Queue
+- There is a simple queue that posts all new data from the table in a JSON format to the following URL: http://tools.test-me.xyz/site/capture
+- this job working when an exchange curreny will be added in database.
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
