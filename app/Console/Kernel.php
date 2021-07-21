@@ -25,11 +25,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('exchange:daily  --force')->->dailyAt('13:05');;
+        $schedule->command('exchange:daily  --force')->dailyAt('13:05');;
     }
 
     /**
-     * Register the commands for the application.
+     * Register the commands for the application.git
      *
      * @return void
      */
