@@ -70,7 +70,7 @@ class DailyExchange extends Command
         $data['value'] = $this->getExchangeBNR($currency);
         $data['source'] = 'API BNR';
 
-        if($data['value'] !== 'error') {
+        if($data['value'] && $data['value'] !== 'error') {
             DB::table('exchanges')->insert( $data );
         }
         \Log::info($data['date'].' : '.$data['currency']. ' : '.$data['value']);
